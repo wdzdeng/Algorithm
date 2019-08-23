@@ -1,6 +1,8 @@
 package github.com.wdzdeng.algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * 输入一个字符串,按字典序打印出该字符串中字符的所有排列。
@@ -14,7 +16,40 @@ import java.util.ArrayList;
  */
 public class SortString {
     public ArrayList<String> Permutation(String str) {
+        ArrayList<String> strList = new ArrayList<>();
+        if (str == null || str.length()<1) return strList;
+        char[] chars = str.toCharArray();
+        recursive(chars, 0, strList);
+        strList.forEach(it -> System.out.println(it));
+        Collections.sort(strList);
+        return strList;
+    }
+    public static void recursive(char[] chars, int index, ArrayList<String> list){
+        if (index == chars.length-1){
+            list.add(String.valueOf(chars));
+            return;
+        }
+        HashSet set = new HashSet();//去重
+        for (int i = index; i < chars.length; ++i){
+            if (set.contains(chars[i])) continue;
+            set.add(chars[i]);
+            swap(chars, index, i);
+            recursive(chars, index+1, list);
+            swap(chars,i, index);//交换后再换回来
 
+        }
+        set = null;
+    }
+
+    public static void swap(char[] chars, int index1, int index2){
+        char temp = chars[index2];
+        chars[index2] = chars[index1];
+        chars[index1] = temp;
+    }
+
+    public static void main(String[] s){
+        SortString sortString = new SortString();
+        sortString.Permutation("abc");
     }
 
 }
