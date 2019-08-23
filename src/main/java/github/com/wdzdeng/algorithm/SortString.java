@@ -15,7 +15,7 @@ import java.util.HashSet;
  *  就是从每个子串的第二个字符开始依次与第一个字符交换，然后继续处理子串。
  */
 public class SortString {
-    public ArrayList<String> Permutation(String str) {
+    public ArrayList<String> permutation(String str) {
         ArrayList<String> strList = new ArrayList<>();
         if (str == null || str.length()<1) return strList;
         char[] chars = str.toCharArray();
@@ -49,7 +49,7 @@ public class SortString {
 
     public static void main(String[] s){
         SortString sortString = new SortString();
-        sortString.Permutation("abc");
+        sortString.permutation("abc");
     }
 
 }
