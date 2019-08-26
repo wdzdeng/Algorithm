@@ -3,6 +3,8 @@ package github.com.wdzdeng.algorithm;
 import java.util.Scanner;
 
 /**
+ * 01背包问题
+ *
  * 现有一个容量大小为V的背包和N件物品，
  * 每件物品有两个属性，体积和价值，请问这个背包最多能装价值为多少的物品？
  *
@@ -48,7 +50,7 @@ public class BackPack_ZeroOne {
         int n = sc.nextInt();
         int[] volumes = new int[n+1];//体积
         int[] values = new int[n+1];//价值
-        int[][] dp = new int[v+1][v+1];
+        int[][] dp = new int[n+1][v+1];
         for (int i = 1; i<= n; ++i){
             volumes[i] = sc.nextInt();
             values[i] = sc.nextInt();
